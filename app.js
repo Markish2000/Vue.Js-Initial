@@ -34,18 +34,22 @@ const app = createApp({
   setup() {
     const canShowAuthor = ref(true);
     const quotes = ref(originalQuotes);
+    const newMessage = ref('');
+
     const totalQuotes = computed(() => {
       return quotes.value.length;
     });
 
     const addQuote = () => {
       quotes.value.unshift({
-        quote: 'Hola Mundo :D',
+        quote: newMessage.value,
         author: 'Marcos Hernan Parella',
       });
+
+      newMessage.value = '';
     };
 
-    return { addQuote, canShowAuthor, totalQuotes, quotes };
+    return { addQuote, canShowAuthor, newMessage, totalQuotes, quotes };
   },
 });
 
